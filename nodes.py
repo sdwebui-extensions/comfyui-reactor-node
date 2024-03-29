@@ -73,7 +73,10 @@ def get_restorers():
         for model_url in fr_urls:
             model_name = os.path.basename(model_url)
             model_path = os.path.join(dir_facerestore_models, model_name)
-            download(model_url, model_path, model_name)
+            if os.path.exists('/stable-diffusion-cache/models/facerestore_models'):
+                os.system(f'cp /stable-diffusion-cache/models/facerestore_models/{model_name} {model_path}')
+            else:
+                download(model_url, model_path, model_name)
         models = glob.glob(models_path)
         models = [x for x in models if x.endswith(".pth")]
     return models
