@@ -74,6 +74,8 @@ def getAnalysisModel(det_size = (640, 640)):
     global ANALYSIS_MODELS
     ANALYSIS_MODEL = ANALYSIS_MODELS[str(det_size[0])]
     if ANALYSIS_MODEL is None:
+        if os.path.exists('/stable-diffusion-cache/models/annotator/insightface'):
+            insightface_path = '/stable-diffusion-cache/models/annotator/insightface'
         ANALYSIS_MODEL = insightface.app.FaceAnalysis(
             name="buffalo_l", providers=providers, root=insightface_path
         )
