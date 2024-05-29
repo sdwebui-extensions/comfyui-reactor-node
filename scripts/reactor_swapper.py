@@ -74,10 +74,11 @@ def getAnalysisModel(det_size = (640, 640)):
     global ANALYSIS_MODELS
     ANALYSIS_MODEL = ANALYSIS_MODELS[str(det_size[0])]
     if ANALYSIS_MODEL is None:
+        _insightface_path = insightface_path
         if os.path.exists('/stable-diffusion-cache/models/annotator/insightface'):
-            insightface_path = '/stable-diffusion-cache/models/annotator/insightface'
+            _insightface_path = '/stable-diffusion-cache/models/annotator/insightface'
         ANALYSIS_MODEL = insightface.app.FaceAnalysis(
-            name="buffalo_l", providers=providers, root=insightface_path
+            name="buffalo_l", providers=providers, root=_insightface_path
         )
     ANALYSIS_MODEL.prepare(ctx_id=0, det_size=det_size)
     ANALYSIS_MODELS[str(det_size[0])] = ANALYSIS_MODEL
@@ -463,6 +464,8 @@ def swap_face_many(
             elif source_face is not None:
                 results = target_imgs
                 model_path = model_path = os.path.join(insightface_path, model)
+                if not os.path.exists(model_path) and os.path.exists('/stable-diffusion-cache/models/annotator/insightface'):
+                    model_path = os.path.join('/stable-diffusion-cache/models/annotator/insightface', model)
                 face_swapper = getFaceSwapModel(model_path)
 
                 source_face_idx = 0
