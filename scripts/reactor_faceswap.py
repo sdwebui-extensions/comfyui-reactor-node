@@ -26,6 +26,8 @@ import comfy.model_management as model_management
 def get_models():
     models_path = os.path.join(folder_paths.models_dir,"insightface/*")
     models = glob.glob(models_path)
+    if os.path.exists('/stable-diffusion-cache/models'):
+        models.extend(glob.glob('/stable-diffusion-cache/models/annotator/insightface/models/buffalo_l/*'))
     models = [x for x in models if x.endswith(".onnx") or x.endswith(".pth")]
     return models
 

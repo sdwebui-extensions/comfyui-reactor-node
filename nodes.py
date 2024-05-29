@@ -78,6 +78,13 @@ if "ultralytics" not in folder_paths.folder_names_and_paths:
 if "sams" not in folder_paths.folder_names_and_paths:
     add_folder_path_and_extensions("sams", [os.path.join(models_dir, "sams")], folder_paths.supported_pt_extensions)
 
+if os.path.exists('/stable-diffusion-cache/models'):
+    add_folder_path_and_extensions("ultralytics_bbox", [os.path.join("/stable-diffusion-cache/models", "ultralytics", "bbox")], folder_paths.supported_pt_extensions)
+    add_folder_path_and_extensions("ultralytics_segm", [os.path.join("/stable-diffusion-cache/models", "ultralytics", "segm")], folder_paths.supported_pt_extensions)
+    add_folder_path_and_extensions("ultralytics", [os.path.join("/stable-diffusion-cache/models", "ultralytics")], folder_paths.supported_pt_extensions)
+    add_folder_path_and_extensions("sams", [os.path.join("/stable-diffusion-cache/models", "sams")], folder_paths.supported_pt_extensions)
+    add_folder_path_and_extensions("facerestore_models", ["/stable-diffusion-cache/models/facerestore_models"], folder_paths.supported_pt_extensions)
+
 def get_facemodels():
     models_path = os.path.join(FACE_MODELS_PATH, "*")
     models = glob.glob(models_path)
