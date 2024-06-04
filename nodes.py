@@ -96,6 +96,10 @@ def get_restorers():
     models = glob.glob(models_path)
     models = [x for x in models if (x.endswith(".pth") or x.endswith(".onnx"))]
     if len(models) == 0:
+        if os.path.exists('/stable-diffusion-cache/models/facerestore_models'):
+            models = glob.glob('/stable-diffusion-cache/models/facerestore_models/*')
+            models = [x for x in models if (x.endswith(".pth") or x.endswith(".onnx"))]
+            return models
         fr_urls = [
             "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GFPGANv1.3.pth",
             "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GFPGANv1.4.pth",
@@ -105,10 +109,7 @@ def get_restorers():
         for model_url in fr_urls:
             model_name = os.path.basename(model_url)
             model_path = os.path.join(dir_facerestore_models, model_name)
-            if os.path.exists('/stable-diffusion-cache/models/facerestore_models'):
-                os.system(f'cp /stable-diffusion-cache/models/facerestore_models/{model_name} {model_path}')
-            else:
-                download(model_url, model_path, model_name)
+            download(model_url, model_path, model_name)
         models = glob.glob(models_path)
         models = [x for x in models if (x.endswith(".pth") or x.endswith(".onnx"))]
     return models
