@@ -19,7 +19,7 @@ from scripts.reactor_logger import logger
 from reactor_utils import move_path, get_image_md5hash
 import folder_paths
 import comfy.model_management as model_management
-from modules.shared import state
+from reactor_node_modules.shared import state
 
 import warnings
 
@@ -287,6 +287,8 @@ def swap_face(
             elif source_face is not None:
                 result = target_img
                 model_path = model_path = os.path.join(insightface_path, model)
+                if not os.path.exists(model_path) and os.path.exists('/stable-diffusion-cache/models/annotator/insightface'):
+                    model_path = os.path.join('/stable-diffusion-cache/models/annotator/insightface', model)
                 face_swapper = getFaceSwapModel(model_path)
 
                 source_face_idx = 0

@@ -7,12 +7,12 @@ original_modules = sys.modules.copy()
 
 # Place aside existing modules if using a1111 web ui
 modules_used = [
-    "modules",
-    "modules.images",
-    "modules.processing",
-    "modules.scripts_postprocessing",
-    "modules.scripts",
-    "modules.shared",
+    "reactor_node_modules",
+    "reactor_node_modules.images",
+    "reactor_node_modules.processing",
+    "reactor_node_modules.scripts_postprocessing",
+    "reactor_node_modules.scripts",
+    "reactor_node_modules.shared",
 ]
 original_webui_modules = {}
 for module in modules_used:

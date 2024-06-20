@@ -4,12 +4,12 @@ from PIL import Image
 
 import modules.scripts as scripts
 # from modules.upscaler import Upscaler, UpscalerData
-from modules import scripts, scripts_postprocessing
-from modules.processing import (
+from reactor_node_modules import scripts, scripts_postprocessing
+from reactor_node_modules.processing import (
     StableDiffusionProcessing,
     StableDiffusionProcessingImg2Img,
 )
-from modules.shared import state
+from reactor_node_modules.shared import state
 from scripts.reactor_logger import logger
 from scripts.reactor_swapper import (
     swap_face,
