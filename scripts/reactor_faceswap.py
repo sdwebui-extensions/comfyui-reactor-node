@@ -2,7 +2,7 @@ import os, glob
 
 from PIL import Image
 
-import modules.scripts as scripts
+import reactor_node_modules.scripts as scripts
 # from modules.upscaler import Upscaler, UpscalerData
 from reactor_node_modules import scripts, scripts_postprocessing
 from reactor_node_modules.processing import (
