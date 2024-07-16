@@ -87,6 +87,7 @@ if os.path.exists('/stable-diffusion-cache/models'):
     add_folder_path_and_extensions("ultralytics", [os.path.join("/stable-diffusion-cache/models", "ultralytics")], folder_paths.supported_pt_extensions)
     add_folder_path_and_extensions("sams", [os.path.join("/stable-diffusion-cache/models", "sams")], folder_paths.supported_pt_extensions)
     add_folder_path_and_extensions("facerestore_models", ["/stable-diffusion-cache/models/facerestore_models"], folder_paths.supported_pt_extensions)
+    add_folder_path_and_extensions("facedetection", ["/stable-diffusion-cache/models/facedetection", os.path.join(models_dir, "facedetection")], folder_paths.supported_pt_extensions)
 
 def get_facemodels():
     models_path = os.path.join(FACE_MODELS_PATH, "*")
