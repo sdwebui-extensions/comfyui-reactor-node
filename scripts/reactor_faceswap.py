@@ -48,6 +48,11 @@ class FaceSwapScript(scripts.Script):
         gender_target,
         face_model,
         faces_order,
+        face_boost_enabled,
+        face_restore_model,
+        face_restore_visibility,
+        codeformer_weight,
+        interpolation,
     ):
         self.enable = enable
         if self.enable:
@@ -59,6 +64,11 @@ class FaceSwapScript(scripts.Script):
             self.model = model
             self.face_model = face_model
             self.faces_order = faces_order
+            self.face_boost_enabled = face_boost_enabled
+            self.face_restore_model = face_restore_model
+            self.face_restore_visibility = face_restore_visibility
+            self.codeformer_weight = codeformer_weight
+            self.interpolation = interpolation
             self.source_faces_index = [
                 int(x) for x in source_faces_index.strip(",").split(",") if x.isnumeric()
             ]
@@ -100,6 +110,11 @@ class FaceSwapScript(scripts.Script):
                         gender_target=self.gender_target,
                         face_model=self.face_model,
                         faces_order=self.faces_order,
+                        face_boost_enabled=self.face_boost_enabled,
+                        face_restore_model=self.face_restore_model,
+                        face_restore_visibility=self.face_restore_visibility,
+                        codeformer_weight=self.codeformer_weight,
+                        interpolation=self.interpolation,
                     )
                     p.init_images[0] = result
 
@@ -132,6 +147,11 @@ class FaceSwapScript(scripts.Script):
                         gender_target=self.gender_target,
                         face_model=self.face_model,
                         faces_order=self.faces_order,
+                        face_boost_enabled=self.face_boost_enabled,
+                        face_restore_model=self.face_restore_model,
+                        face_restore_visibility=self.face_restore_visibility,
+                        codeformer_weight=self.codeformer_weight,
+                        interpolation=self.interpolation,
                     )
                     p.init_images = result
 

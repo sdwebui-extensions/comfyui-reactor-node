@@ -2,7 +2,7 @@
 
   <img src="https://github.com/Gourieff/Assets/raw/main/sd-webui-reactor/ReActor_logo_NEW_EN.png?raw=true" alt="logo" width="180px"/>
 
-  ![Version](https://img.shields.io/badge/node_version-0.5.0_beta4-green?style=for-the-badge&labelColor=darkgreen)
+  ![Version](https://img.shields.io/badge/node_version-0.5.1_alpha6-lightgreen?style=for-the-badge&labelColor=darkgreen)
 
   <sup>
   <font color=brightred>
@@ -55,6 +55,28 @@
 
 ## What's new in the latest update
 
+### 0.5.1 <sub><sup>ALPHA1</sup></sub>
+
+- Support of GPEN 1024/2048 restoration models (available in the HF dataset https://huggingface.co/datasets/Gourieff/ReActor/tree/main/models/facerestore_models)
+- ReActorFaceBoost Node - an attempt to improve the quality of swapped faces. The idea is to restore and scale the swapped face (according to the `face_size` parameter of the restoration model) BEFORE pasting it to the target image (via inswapper algorithms), more information is [here (PR#321)](https://github.com/Gourieff/comfyui-reactor-node/pull/321)
+
+<img src="https://github.com/Gourieff/Assets/blob/main/comfyui-reactor-node/0.5.1-whatsnew-01.jpg?raw=true" alt="0.5.1-whatsnew-01" width="100%"/>
+
+[Full size demo preview](https://github.com/Gourieff/Assets/blob/main/comfyui-reactor-node/0.5.1-whatsnew-02.png)
+
+- Some fixes and improvements
+
+<details>
+	<summary><a>Previous versions</a></summary>
+
+### [0.5.0 <sub><sup>BETA4</sup></sub>](https://github.com/Gourieff/comfyui-reactor-node/releases/tag/v0.5.0)
+
+- Spandrel lib support for GFPGAN
+
+### 0.5.0 <sub><sup>BETA3</sup></sub>
+
+- Fixes: "RAM issue", "No detection" for MaskingHelper
+
 ### 0.5.0 <sub><sup>BETA2</sup></sub>
 
 - You can now build a blended face model from a batch of face models you already have, just add the "Make Face Model Batch" node to your workflow and connect several models via "Load Face Model"
@@ -94,9 +116,6 @@ Use this Node to gain the best results of the face swapping process:
 <img src="https://github.com/Gourieff/Assets/blob/main/comfyui-reactor-node/0.5.0-whatsnew-04.jpg?raw=true" alt="0.5.0-whatsnew-04" width="100%"/>
 
 - Little speed boost when analyzing target images (unfortunately it is still quite slow in compare to swapping and restoring...)
-
-<details>
-	<summary><a>Previous versions</a></summary>
 
 ### [0.4.2](https://github.com/Gourieff/comfyui-reactor-node/releases/tag/v0.4.2)
 
@@ -208,6 +227,7 @@ List of Nodes:
    - ReActorFaceSwap (Main Node)
    - ReActorFaceSwapOpt (Main Node with the additional Options input)
    - ReActorOptions (Options for ReActorFaceSwapOpt)
+   - ReActorFaceBoost (Face Booster Node)
    - ReActorMaskHelper (Masking Helper)
 - ••• Operations with Face Models •••
   - ReActorSaveFaceModel (Save Face Model)
